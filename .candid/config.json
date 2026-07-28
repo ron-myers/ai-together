@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "ship": {
+    "installCommand": "pnpm install",
+    "buildCommand": "pnpm build",
+    "testCommand": "pnpm test",
+    "targetBranch": "stable",
+    "autoMerge": true
+  }
+}

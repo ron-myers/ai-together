@@ -1,0 +1,269 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Design tokens. Inherited from the live peiitalliance.com/ai-together page:
+   Fraunces display, Inter body, JetBrains Mono utility; warm maroon + gold
+   brand with a red accent. (PRD §11 — real values over the teal fallback.)
+--------------------------------------------------------------------------- */
+:root {
+  --paper: #fcfcfa;
+  --panel: #f6f7fb;
+  --panel-2: #f1f3f9;
+  --ink: #10131a;
+  --ink-body: #3f4654;
+  --ink-soft: #667085;
+  --rule: #e7e4dc;
+  --rule-strong: #d9d6cd;
+  --red: #b5242f; /* accent, links, active spine node text */
+  --red-bright: #e5484d;
+  --maroon: #2e0a0e; /* deep hero background */
+  --gold: #fbcf5c; /* kind badge highlight, active spine node */
+  --gold-deep: #c9992e;
+}
+
+/* Map tokens into Tailwind's theme so utilities like text-ink / bg-paper /
+   font-display exist. Fonts come from next/font variables set on <html>. */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-ink: var(--ink);
+  --color-ink-body: var(--ink-body);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-red: var(--red);
+  --color-red-bright: var(--red-bright);
+  --color-maroon: var(--maroon);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+* {
+  border-color: var(--rule);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink-body);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* In @layer base so Tailwind text-color utilities (text-white, text-ink-soft,
+   custom hex) on <a> buttons win — an unlayered rule here would beat every
+   utility and render button labels red-on-red. */
+@layer base {
+  a {
+    color: var(--red);
+    text-underline-offset: 3px;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Focus rings, keyboard-reachable throughout (PRD §11 quality floor). */
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Roman-numeral / mono eyebrows carried over from the live page. */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  /* Darker amber than --gold-deep so the label clears AA on the white page;
+     the hero overrides to bright gold on its red field. */
+  color: #977015;
+  font-weight: 500;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Kind badge -------------------------------------------------------- */
+.kind-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--rule-strong);
+  color: var(--ink-soft);
+  background: var(--panel);
+  white-space: nowrap;
+}
+.kind-badge[data-kind] {
+  border-color: color-mix(in srgb, var(--gold) 55%, var(--rule));
+  background: color-mix(in srgb, var(--gold) 18%, var(--paper));
+  color: var(--gold-deep);
+}
+.kind-badge[data-kind='advanced'],
+.kind-badge[data-kind='build'] {
+  border-color: color-mix(in srgb, var(--red) 40%, var(--rule));
+  background: color-mix(in srgb, var(--red) 8%, var(--paper));
+  color: var(--red);
+}
+
+/* ---- Prose (rendered markdown body) ------------------------------------ */
+.prose {
+  color: var(--ink-body);
+  line-height: 1.7;
+}
+.prose > * + * {
+  margin-top: 1em;
+}
+.prose h2,
+.prose h3 {
+  margin-top: 1.6em;
+  color: var(--ink);
+}
+.prose h3 {
+  font-size: 1.15rem;
+}
+.prose a {
+  color: var(--red);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.4em;
+}
+.prose ul {
+  list-style: disc;
+}
+.prose ol {
+  list-style: decimal;
+}
+.prose li + li {
+  margin-top: 0.35em;
+}
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--panel-2);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+.prose pre {
+  background: #1b1d23;
+  color: #e8e8e8;
+  padding: 1rem 1.15rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: 0.85em;
+}
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+.prose blockquote {
+  border-left: 3px solid var(--gold);
+  padding-left: 1rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.prose img {
+  border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+}
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.95em;
+}
+.prose th,
+.prose td {
+  border: 1px solid var(--rule-strong);
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+}
+
+/* ---- Motion (respect reduced-motion, PRD §11) -------------------------- */
+@keyframes spineIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-up {
+  animation: fadeUp 0.18s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Minimal syntax highlight theme for rehype-highlight (hljs class names). */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #c586c0;
+}
+.hljs-string,
+.hljs-attr {
+  color: #ce9178;
+}
+.hljs-number,
+.hljs-literal {
+  color: #b5cea8;
+}
+.hljs-comment {
+  color: #6a9955;
+}
+.hljs-title,
+.hljs-function .hljs-title {
+  color: #dcdcaa;
+}
