@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" width="1600" height="980" font-family="Helvetica Neue, Helvetica, Arial, DejaVu Sans, sans-serif">
+
+  <rect x="0" y="0" width="1600" height="980" fill="#FFFFFF"/>
+
+  <!-- ============ TITLE ============ -->
+  <text x="800" y="78" text-anchor="middle" font-size="46" font-weight="700" fill="#17222B">Two ways to buy AI</text>
+  <text x="800" y="120" text-anchor="middle" font-size="24" fill="#5B6B77">Same model. Two very different relationships with the bill.</text>
+
+  <!-- ============ LEFT PANEL : SUBSCRIPTION ============ -->
+  <rect x="80" y="170" width="680" height="650" rx="18" fill="#F2F8FA" stroke="#CFE3EA" stroke-width="2"/>
+  <path d="M80,248 V188 Q80,170 98,170 H742 Q760,170 760,188 V248 Z" fill="#1F6F8B"/>
+  <text x="420" y="223" text-anchor="middle" font-size="34" font-weight="700" fill="#FFFFFF" letter-spacing="2">SUBSCRIPTION</text>
+  <text x="420" y="292" text-anchor="middle" font-size="25" font-style="italic" fill="#1F6F8B">like a phone plan</text>
+
+  <!-- mini chart: cost flattens at a ceiling -->
+  <g>
+    <path d="M350,310 V440 H520" fill="none" stroke="#A9C3CD" stroke-width="3"/>
+    <path d="M350,352 H524" fill="none" stroke="#1F6F8B" stroke-width="2.5" stroke-dasharray="7 7" opacity="0.55"/>
+    <path d="M350,438 C385,438 396,360 421,356 L520,356" fill="none" stroke="#1F6F8B" stroke-width="6" stroke-linecap="round"/>
+    <text x="336" y="322" text-anchor="end" font-size="17" fill="#7A8B96">cost</text>
+    <text x="520" y="466" text-anchor="end" font-size="17" fill="#7A8B96">usage</text>
+    <text x="540" y="358" font-size="18" fill="#1F6F8B">ceiling</text>
+  </g>
+
+  <!-- rows -->
+  <g fill="#5B6B77" font-size="17" letter-spacing="2">
+    <text x="120" y="508">WHO'S ON THE OTHER END</text>
+    <text x="120" y="590">HOW YOU PAY</text>
+    <text x="120" y="672">AT THE LIMIT</text>
+    <text x="120" y="754">THE FEELING</text>
+  </g>
+  <g fill="#17222B" font-size="26" font-weight="600">
+    <text x="120" y="542">A person, typing</text>
+    <text x="120" y="624">Flat fee, up front</text>
+    <text x="120" y="706">You pause until it resets</text>
+    <text x="120" y="788">Calm. Predictable. Capped.</text>
+  </g>
+  <g stroke="#CFE3EA" stroke-width="1.5">
+    <path d="M120,566 H720"/>
+    <path d="M120,648 H720"/>
+    <path d="M120,730 H720"/>
+  </g>
+
+  <!-- ============ RIGHT PANEL : API ============ -->
+  <rect x="840" y="170" width="680" height="650" rx="18" fill="#FDF6EF" stroke="#F0DCC6" stroke-width="2"/>
+  <path d="M840,248 V188 Q840,170 858,170 H1502 Q1520,170 1520,188 V248 Z" fill="#B8621B"/>
+  <text x="1180" y="223" text-anchor="middle" font-size="34" font-weight="700" fill="#FFFFFF" letter-spacing="2">API</text>
+  <text x="1180" y="292" text-anchor="middle" font-size="25" font-style="italic" fill="#B8621B">like a taxi meter</text>
+
+  <!-- mini chart: cost keeps climbing -->
+  <g>
+    <path d="M1110,310 V440 H1280" fill="none" stroke="#E3C7A8" stroke-width="3"/>
+    <path d="M1110,438 C1180,430 1230,392 1272,320" fill="none" stroke="#B8621B" stroke-width="6" stroke-linecap="round"/>
+    <path d="M1258,326 L1276,310 L1272,334 Z" fill="#B8621B"/>
+    <text x="1096" y="322" text-anchor="end" font-size="17" fill="#9A8574">cost</text>
+    <text x="1280" y="466" text-anchor="end" font-size="17" fill="#9A8574">usage</text>
+    <text x="1300" y="332" font-size="18" fill="#B8621B">no ceiling</text>
+  </g>
+
+  <!-- rows -->
+  <g fill="#8A7666" font-size="17" letter-spacing="2">
+    <text x="880" y="508">WHO'S ON THE OTHER END</text>
+    <text x="880" y="590">HOW YOU PAY</text>
+    <text x="880" y="672">AT THE LIMIT</text>
+    <text x="880" y="754">THE FEELING</text>
+  </g>
+  <g fill="#17222B" font-size="26" font-weight="600">
+    <text x="880" y="542">A program, calling</text>
+    <text x="880" y="624">Per word, as you go</text>
+    <text x="880" y="706">Nothing stops — unless you set one</text>
+    <text x="880" y="788">Precise. Pay attention.</text>
+  </g>
+  <g stroke="#F0DCC6" stroke-width="1.5">
+    <path d="M880,566 H1480"/>
+    <path d="M880,648 H1480"/>
+    <path d="M880,730 H1480"/>
+  </g>
+
+  <!-- ============ VS BADGE ============ -->
+  <circle cx="800" cy="490" r="29" fill="#FFFFFF" stroke="#C9D4DB" stroke-width="2"/>
+  <text x="800" y="498" text-anchor="middle" font-size="21" font-weight="700" fill="#5B6B77">vs</text>
+
+  <!-- ============ BOTTOM BANNER ============ -->
+  <rect x="80" y="866" width="1440" height="86" rx="16" fill="#17222B"/>
+  <path d="M800,890 V928" stroke="#4A5A66" stroke-width="2"/>
+  <text x="440" y="920" text-anchor="middle" font-size="31" font-weight="600" fill="#9FD6E8">A subscription rents you a seat.</text>
+  <text x="1160" y="920" text-anchor="middle" font-size="31" font-weight="600" fill="#F5C48C">An API rents you an engine.</text>
+
+</svg>
