@@ -87,3 +87,4 @@ Block `kind` drives the level badge: `welcome`, `win`, `starter`,
 - **The spine** (`components/Spine.tsx`) — the signature element. One component
   in three contexts: studio outline, present-mode progress, public recap
   timeline.
+
