@@ -47,7 +47,7 @@ export default async function HomePage() {
             AI Together
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#f0e4d2]/90">
-AI Together is a weekly room where PEI learns to build with AI, no developer background required. We aim to be "AI 102" (versus a hypothetical course, AI 101) for non-technical users, with the goal of solving business problems. Bring your wins, your questions, your blockers! We'll learn together, every Wednesday at <a href="https://peiitalliance.com/the-foundry">The Foundry</a>.
+AI Together is a weekly room where PEI learns to build with AI, no developer background required. We aim to be &ldquo;AI 102&rdquo; (versus a hypothetical course, AI 101) for non-technical users, with the goal of solving business problems. Bring your wins, your questions, your blockers! We&apos;ll learn together, every Wednesday at <a href="https://peiitalliance.com/the-foundry">The Foundry</a>.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
