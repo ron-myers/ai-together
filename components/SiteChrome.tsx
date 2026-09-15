@@ -5,6 +5,8 @@ const NAV = [
   { href: '/sessions', label: 'Sessions' },
   { href: '/presenters', label: 'Presenters' },
   { href: '/takeaways', label: 'Takeaways' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/knowledge', label: 'Knowledge' },
 ]
 
 export function SiteHeader() {
@@ -22,7 +24,7 @@ export function SiteHeader() {
               key={n.href}
               href={n.href}
               className={`text-ink-soft no-underline transition-colors hover:text-ink ${
-                i === 0 ? '' : 'hidden sm:inline'
+                i === 0 ? '' : 'hidden md:inline'
               }`}
             >
               {n.label}
