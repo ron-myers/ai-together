@@ -14,6 +14,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: u('/sessions'), priority: 0.9 },
     { url: u('/presenters'), priority: 0.6 },
     { url: u('/takeaways'), priority: 0.7 },
+    { url: u('/resources'), priority: 0.6 },
+    { url: u('/knowledge'), priority: 0.6 },
     ...sessions.map((s) => ({
       url: u(`/sessions/${s.slug}`),
       lastModified: s.date,

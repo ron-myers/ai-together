@@ -9,6 +9,10 @@ import { z } from 'zod'
 export const LinkSchema = z.object({
   label: z.string().min(1),
   url: z.string().min(1),
+  /** Optional line of context under the label. Rendered on the standing pages. */
+  description: z.string().optional(),
+  /** Overrides the external-URL default in linkTarget(). */
+  newTab: z.boolean().optional(),
 })
 export type Link = z.infer<typeof LinkSchema>
 

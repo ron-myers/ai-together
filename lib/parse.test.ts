@@ -213,6 +213,17 @@ Body.
     expect(s.blocks[0].meta.presenter).toBeUndefined()
   })
 
+  it('parses optional link description and newTab', () => {
+    const raw = `---\ntitle: T\ndate: 2026-01-01\nhost: R\n---\n\n## B\n\n\`\`\`yaml\nlinks:\n  - label: A\n    url: https://a.example\n    description: Why you would click\n  - label: B\n    url: /takeaways\n    newTab: false\n\`\`\`\n\nx\n`
+    const s = parseSession(raw, 't')
+    expect(s.blocks[0].error).toBeUndefined()
+    expect(s.blocks[0].meta.links[0].description).toBe('Why you would click')
+    expect(s.blocks[0].meta.links[0].newTab).toBeUndefined()
+    // false must survive: cleanYaml drops nullish, not falsy.
+    expect(s.blocks[0].meta.links[1].newTab).toBe(false)
+    expect(s.blocks[0].meta.links[1].description).toBeUndefined()
+  })
+
   it('drops an incomplete link row instead of erroring', () => {
     const raw = `---\ntitle: T\ndate: 2026-01-01\nhost: R\n---\n\n## B\n\n\`\`\`yaml\nkind: win\nlinks:\n  - label:\n    url:\n\`\`\`\n\nx\n`
     const s = parseSession(raw, 't')

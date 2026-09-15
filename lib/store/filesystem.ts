@@ -13,6 +13,17 @@ import type { SessionStore, StoreKind } from './types'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content', 'sessions')
 
+// Longer-form companion docs a session links to. They live one level down so
+// readAllRaw() (non-recursive) keeps them out of the archive listing, the
+// sitemap and prev/next — they are reference pages, not sessions.
+const SUPPLEMENTAL_DIR = path.join(CONTENT_DIR, 'supplemental')
+export const SUPPLEMENTAL_PREFIX = 'supplemental'
+
+// Standing reference pages (/resources, /knowledge) that belong to the program
+// rather than to any one week. Siblings of content/sessions, so they stay out
+// of readAllRaw() and therefore out of the archive, sitemap and prev/next.
+const PAGES_DIR = path.join(process.cwd(), 'content', 'pages')
+
 async function readAllRaw(): Promise<{ slug: string; raw: string }[]> {
   let names: string[]
   try {
@@ -38,6 +49,28 @@ export class FileSessionStore implements SessionStore {
       .map(({ slug, raw }) => toSummary(parseSession(raw, slug)))
       .filter((s) => s.published)
       .sort((a, b) => (a.date < b.date ? 1 : -1))
+  }
+
+  /** Slugs under content/sessions/supplemental, without the .md. */
+  async listSupplemental(): Promise<string[]> {
+    try {
+      const names = await fs.readdir(SUPPLEMENTAL_DIR)
+      return names
+        .filter((n) => n.endsWith('.md'))
+        .map((n) => n.replace(/\.md$/, ''))
+    } catch {
+      return [] // no supplemental dir yet
+    }
+  }
+
+  /** A standing page from content/pages, e.g. `resources`. */
+  async getPage(slug: string): Promise<Session | null> {
+    try {
+      const raw = await fs.readFile(path.join(PAGES_DIR, `${slug}.md`), 'utf8')
+      return parseSession(raw, slug)
+    } catch {
+      return null // no pages dir, or no such page
+    }
   }
 
   async get(slug: string): Promise<Session | null> {

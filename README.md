@@ -67,10 +67,17 @@ takeaway: Voice note to summary in four minutes
 links:
   - label: The tool
     url: https://example.com
+    description: Optional line of context, shown on /resources and /knowledge
+    newTab: true
 ```
 
 Prose renders normally here.
 ````
+
+A link needs `label` and `url`; `description` and `newTab` are optional. The
+standing pages (`/resources`, `/knowledge`, from `content/pages/`) render the
+description and send external links to a new tab unless `newTab` says
+otherwise. The session surfaces ignore both fields.
 
 Block `kind` drives the level badge: `welcome`, `win`, `starter`,
 `intermediate`, `advanced`, `build`. Unknown or absent kinds render neutral.
